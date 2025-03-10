@@ -24,16 +24,17 @@ public class RiderController {
     }
 
     @PostMapping("/cancelRide/{rideId}")
-    public ResponseEntity<RideDto> cancelRide(@PathVariable Long rideId){
+    public ResponseEntity<RideDto> cancelRide(@PathVariable Long rideId) {
         return ResponseEntity.ok(riderService.cancelRide(rideId));
     }
+
     @PostMapping("/rateDriver")
-    public ResponseEntity<DriverDto> rateDriver(@RequestBody RatingDto ratingDto){
+    public ResponseEntity<DriverDto> rateDriver(@RequestBody RatingDto ratingDto) {
         return ResponseEntity.ok(riderService.rateDriver(ratingDto.getRideId(), ratingDto.getRating()));
     }
 
     @GetMapping("/getMyProfile")
-    public ResponseEntity<RiderDto> getMyProfile(){
+    public ResponseEntity<RiderDto> getMyProfile() {
         return ResponseEntity.ok(riderService.getMyProfile());
     }
 
@@ -45,10 +46,4 @@ public class RiderController {
         return ResponseEntity.ok(riderService.getAllMyRides(pageRequest));
     }
 
-    @PostMapping("/rateDriver/{rideId}/{rating}")
-    public ResponseEntity<DriverDto> rateDriver(@PathVariable Long rideId, @PathVariable Integer rating) {
-        return ResponseEntity.ok(riderService.rateDriver(rideId, rating));
-    }
-
 }
-

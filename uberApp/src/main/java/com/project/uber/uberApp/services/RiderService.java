@@ -11,6 +11,7 @@ import org.springframework.data.domain.PageRequest;
 
 import java.util.List;
 
+
 public interface RiderService {
 
     RideRequestDto requestRide(RideRequestDto rideRequestDto);

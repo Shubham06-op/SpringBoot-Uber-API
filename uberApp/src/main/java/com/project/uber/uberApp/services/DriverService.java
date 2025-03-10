@@ -8,10 +8,9 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 
 import java.util.List;
-
 public interface DriverService {
 
-    RideDto acceptRide(Long rideId);
+    RideDto acceptRide(Long rideRequestId);
 
     RideDto cancelRide(Long rideId);
 

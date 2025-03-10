@@ -7,3 +7,4 @@ public class RatingDto {
     private Long rideId;
     private Integer rating;
 }
+

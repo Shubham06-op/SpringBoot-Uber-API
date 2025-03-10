@@ -16,6 +16,10 @@ import com.project.uber.uberApp.strategies.PaymentStrategy;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+//Rider had 232, Driver had 500
+//Ride cost is 100, commission = 30
+//Rider -> 232-100 = 132
+//Driver -> 500 + (100 - 30) = 570
 
 @Service
 @RequiredArgsConstructor
@@ -42,4 +46,3 @@ public class WalletPaymentStrategy implements PaymentStrategy {
         paymentRepository.save(payment);
     }
 }
-

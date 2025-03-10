@@ -8,7 +8,6 @@ import org.springframework.http.server.ServerHttpRequest;
 import org.springframework.http.server.ServerHttpResponse;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseBodyAdvice;
-
 import java.util.List;
 
 @RestControllerAdvice
@@ -19,7 +18,7 @@ public class GlobalResponseHandler implements ResponseBodyAdvice<Object> {
         return true;
     }
 
- /*   @Override
+    @Override
     public Object beforeBodyWrite(Object body, MethodParameter returnType, MediaType selectedContentType, Class<? extends HttpMessageConverter<?>> selectedConverterType, ServerHttpRequest request, ServerHttpResponse response) {
         List<String> allowedRoutes = List.of("/v3/api-docs", "/actuator");
 
@@ -31,19 +30,6 @@ public class GlobalResponseHandler implements ResponseBodyAdvice<Object> {
             return body;
         }
 
-        return new ApiResponse<>(body);
-    }
-*/
-    @Override
-    public Object beforeBodyWrite(Object body, MethodParameter returnType, MediaType selectedContentType, Class<? extends HttpMessageConverter<?>> selectedConverterType, ServerHttpRequest request, ServerHttpResponse response) {
-        String path = request.getURI().getPath();
-        if (path.startsWith("/v3/api-docs") || path.startsWith("/swagger-ui")) {
-            return body;
-        }
-
-        if(body instanceof ApiResponse<?>){
-            return body;
-        }
         return new ApiResponse<>(body);
     }
 }

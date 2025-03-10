@@ -11,33 +11,15 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 @Slf4j
 public class EmailSenderServiceImpl implements EmailSenderService {
+
     private final JavaMailSender javaMailSender;
 
     @Override
-    public void sendMail(String toMail, String subject, String body) {
-
-        try
-        {
-        SimpleMailMessage simpleMailMessage = new SimpleMailMessage();
-        simpleMailMessage.setTo(toMail);
-        simpleMailMessage.setSubject(subject);
-        simpleMailMessage.setText(body);
-
-        javaMailSender.send(simpleMailMessage);
-        log.info("Email send successfully");
-    }
-    catch (Exception e) {
-        log.info("Cannot send email, "+e.getMessage());
-    }
-}
-
-    @Override
-    public void sendMail(String[] toMail, String subject, String body) {
+    public void sendEmail(String toEmail, String subject, String body) {
         try {
             SimpleMailMessage simpleMailMessage = new SimpleMailMessage();
 
-            simpleMailMessage.setTo("shubh.rajpure01@gmail.com");
-            simpleMailMessage.setBcc(toMail);
+            simpleMailMessage.setTo(toEmail);
             simpleMailMessage.setSubject(subject);
             simpleMailMessage.setText(body);
 
@@ -48,5 +30,20 @@ public class EmailSenderServiceImpl implements EmailSenderService {
         }
     }
 
-}
+    @Override
+    public void sendEmail(String[] toEmail, String subject, String body) {
+        try {
+            SimpleMailMessage simpleMailMessage = new SimpleMailMessage();
 
+            simpleMailMessage.setTo("anuj55149@gmail.com");
+            simpleMailMessage.setBcc(toEmail);
+            simpleMailMessage.setSubject(subject);
+            simpleMailMessage.setText(body);
+
+            javaMailSender.send(simpleMailMessage);
+            log.info("Email sent successfully");
+        } catch (Exception e) {
+            log.info("Cannot send email, "+e.getMessage());
+        }
+    }
+}

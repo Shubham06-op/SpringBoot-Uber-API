@@ -10,7 +10,6 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
-
 @Configuration
 @EnableWebSecurity
 @RequiredArgsConstructor
@@ -18,12 +17,7 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 public class WebSecurityConfig {
 
     private final JwtAuthFilter jwtAuthFilter;
-
-    private static final String[] PUBLIC_ROUTES = {
-            "/auth/**",
-            "/swagger-ui/**",       // Swagger UI
-            "/v3/api-docs/**"       // OpenAPI docs
-    };
+    private static final String[] PUBLIC_ROUTES= {"/auth/**"};
 
     @Bean
     SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
@@ -40,4 +34,5 @@ public class WebSecurityConfig {
 
         return httpSecurity.build();
     }
+
 }

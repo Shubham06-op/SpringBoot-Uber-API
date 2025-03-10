@@ -12,23 +12,23 @@ import org.locationtech.jts.geom.Point;
 
 import java.time.LocalDateTime;
 
-@Entity
 @Getter
 @Setter
+@Entity
 @AllArgsConstructor
 @NoArgsConstructor
 @Table(indexes = {
         @Index(name = "idx_ride_rider", columnList = "rider_id"),
         @Index(name = "idx_ride_driver", columnList = "driver_id")
 })
-
 public class Ride {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(columnDefinition = "Geometry(Point, 4326)")
-    private Point pickUpLocation;
+    private Point pickupLocation;
 
     @Column(columnDefinition = "Geometry(Point, 4326)")
     private Point dropOffLocation;
@@ -37,10 +37,10 @@ public class Ride {
     private LocalDateTime createdTime;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    private Driver driver;
+    private Rider rider;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    private Rider rider;
+    private Driver driver;
 
     @Enumerated(EnumType.STRING)
     private PaymentMethod paymentMethod;
@@ -49,11 +49,9 @@ public class Ride {
     private RideStatus rideStatus;
 
     private String otp;
+
     private Double fare;
-
     private LocalDateTime startedAt;
-
     private LocalDateTime endedAt;
-    
 
 }

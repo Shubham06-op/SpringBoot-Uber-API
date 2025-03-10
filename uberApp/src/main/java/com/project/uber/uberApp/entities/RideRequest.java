@@ -9,13 +9,12 @@ import org.hibernate.annotations.CreationTimestamp;
 import org.locationtech.jts.geom.Point;
 
 import java.time.LocalDateTime;
-
 @Entity
 @Getter
 @Setter
 @Table(
         indexes = {
-                @Index(name = "idx_rider", columnList = "rider_id")
+                @Index(name = "idx_ride_request_rider", columnList = "rider_id")
         }
 )
 public class RideRequest {
@@ -25,7 +24,7 @@ public class RideRequest {
     private Long id;
 
     @Column(columnDefinition = "Geometry(Point, 4326)")
-    private Point pickUpLocation;
+    private Point pickupLocation;
 
     @Column(columnDefinition = "Geometry(Point, 4326)")
     private Point dropOffLocation;

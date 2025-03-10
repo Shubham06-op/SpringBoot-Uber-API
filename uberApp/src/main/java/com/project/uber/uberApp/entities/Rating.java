@@ -3,6 +3,7 @@ package com.project.uber.uberApp.entities;
 import jakarta.persistence.*;
 import lombok.*;
 
+
 @Entity
 @Table(indexes = {
         @Index(name = "idx_rating_rider", columnList = "rider_id"),
